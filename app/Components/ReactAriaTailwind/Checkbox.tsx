@@ -1,5 +1,5 @@
-import React, { type ReactNode } from "react";
 import { Check, Minus } from "lucide-react";
+import React, { type ReactNode } from "react";
 import {
   type CheckboxGroupProps as AriaCheckboxGroupProps,
   type CheckboxProps,

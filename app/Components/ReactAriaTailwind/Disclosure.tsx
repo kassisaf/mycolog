@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
 import {
+  type DisclosureProps as AriaDisclosureProps,
+  type DisclosureGroupProps as AriaDisclosureGroupProps,
+  type DisclosurePanelProps as AriaDisclosurePanelProps,
   Disclosure as AriaDisclosure,
   DisclosureGroup as AriaDisclosureGroup,
-  DisclosureProps as AriaDisclosureProps,
-  DisclosureGroupProps as AriaDisclosureGroupProps,
   DisclosurePanel as AriaDisclosurePanel,
-  DisclosurePanelProps as AriaDisclosurePanelProps,
   composeRenderProps,
   Heading,
   Button,
@@ -21,8 +21,8 @@ const disclosure = tv({
   variants: {
     isInGroup: {
       true: "border-0 border-b last:border-b-0 rounded-b-none last:rounded-b-lg",
-    }
-  }
+    },
+  },
 });
 
 const disclosureButton = tv({
@@ -30,12 +30,12 @@ const disclosureButton = tv({
   base: "rounded-lg flex gap-2 items-center w-full text-start p-2 cursor-default",
   variants: {
     isDisabled: {
-      true: 'text-gray-300 dark:text-zinc-600 forced-colors:text-[GrayText]'
+      true: "text-gray-300 dark:text-zinc-600 forced-colors:text-[GrayText]",
     },
     isInGroup: {
       true: "-outline-offset-2 rounded-none group-first:rounded-t-lg group-last:rounded-b-lg",
-    }
-  }
+    },
+  },
 });
 
 const chevron = tv({
@@ -45,9 +45,9 @@ const chevron = tv({
       true: "transform rotate-90",
     },
     isDisabled: {
-      true: 'text-gray-300 dark:text-zinc-600 forced-colors:text-[GrayText]'
-    }
-  }
+      true: "text-gray-300 dark:text-zinc-600 forced-colors:text-[GrayText]",
+    },
+  },
 });
 
 export interface DisclosureProps extends AriaDisclosureProps {
@@ -55,11 +55,13 @@ export interface DisclosureProps extends AriaDisclosureProps {
 }
 
 export function Disclosure({ children, ...props }: DisclosureProps) {
-  let isInGroup = useContext(DisclosureGroupStateContext) !== null;
+  const isInGroup = useContext(DisclosureGroupStateContext) !== null;
   return (
     <AriaDisclosure
       {...props}
-      className={composeRenderProps(props.className, (className, renderProps) => disclosure({ ...renderProps, isInGroup, className }))}
+      className={composeRenderProps(props.className, (className, renderProps) =>
+        disclosure({ ...renderProps, isInGroup, className })
+      )}
     >
       {children}
     </AriaDisclosure>
@@ -71,17 +73,22 @@ export interface DisclosureHeaderProps {
 }
 
 export function DisclosureHeader({ children }: DisclosureHeaderProps) {
-  let { isExpanded } = useContext(DisclosureStateContext)!;
-  let isInGroup = useContext(DisclosureGroupStateContext) !== null;
+  const { isExpanded } = useContext(DisclosureStateContext)!;
+  const isInGroup = useContext(DisclosureGroupStateContext) !== null;
   return (
     <Heading className="text-lg font-semibold">
       <Button
         slot="trigger"
-        className={(renderProps) => disclosureButton({ ...renderProps, isInGroup })}
+        className={(renderProps) =>
+          disclosureButton({ ...renderProps, isInGroup })
+        }
       >
-        {({isDisabled}) => (
+        {({ isDisabled }) => (
           <>
-            <ChevronRight aria-hidden className={chevron({ isExpanded, isDisabled })} />
+            <ChevronRight
+              aria-hidden
+              className={chevron({ isExpanded, isDisabled })}
+            />
             {children}
           </>
         )}
@@ -96,7 +103,13 @@ export interface DisclosurePanelProps extends AriaDisclosurePanelProps {
 
 export function DisclosurePanel({ children, ...props }: DisclosurePanelProps) {
   return (
-    <AriaDisclosurePanel {...props} className={composeTailwindRenderProps(props.className, 'group-data-[expanded]:px-4 group-data-[expanded]:py-2')}>
+    <AriaDisclosurePanel
+      {...props}
+      className={composeTailwindRenderProps(
+        props.className,
+        "group-data-[expanded]:px-4 group-data-[expanded]:py-2"
+      )}
+    >
       {children}
     </AriaDisclosurePanel>
   );
@@ -108,7 +121,13 @@ export interface DisclosureGroupProps extends AriaDisclosureGroupProps {
 
 export function DisclosureGroup({ children, ...props }: DisclosureGroupProps) {
   return (
-    <AriaDisclosureGroup {...props} className={composeTailwindRenderProps(props.className, 'border dark:border-zinc-600 rounded-lg')}>
+    <AriaDisclosureGroup
+      {...props}
+      className={composeTailwindRenderProps(
+        props.className,
+        "rounded-lg border dark:border-zinc-600"
+      )}
+    >
       {children}
     </AriaDisclosureGroup>
   );
