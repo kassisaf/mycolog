@@ -1,15 +1,15 @@
 import React from "react";
 import type { Route } from "./+types/home";
-import { Welcome } from "../welcome/welcome";
+import SpecimenTable from "~/SpecimenTable/SpecimenTable";
 
 // eslint-disable-next-line no-empty-pattern
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "New React Router App" },
+    { title: "MycoLog" },
     { name: "description", content: "Welcome to React Router!" },
   ];
 }
 
 export default function Home() {
-  return <Welcome />;
+  return <SpecimenTable />;
 }
