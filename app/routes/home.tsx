@@ -15,12 +15,22 @@ export default function Home() {
   return (
     <div className="flex h-full w-full flex-col items-center">
       <h1 className="my-5 text-3xl font-bold">🍄 Welcome to MycoLog 🍄</h1>
-      <Card header="Active Specimen">
-        <SpecimenTable
-          columns={["Label", "Stage", "Last Update"]}
-          data={placeholderData}
-        />
-      </Card>
+
+      <div className="flex flex-col space-y-8">
+        <Card header="Fruiting Chamber">
+          <div>Photo feed</div>
+          <div>Temperature: 61.3 F (not controlled)</div>
+          <div>Humidity: 95% (setpoint 90%)</div>
+          <div>O2: ??% (setpoint: ??-??)</div>
+        </Card>
+
+        <Card header="Active Specimen">
+          <SpecimenTable
+            columns={["Label", "Stage", "Last Update"]}
+            data={placeholderData}
+          />
+        </Card>
+      </div>
     </div>
   );
 }

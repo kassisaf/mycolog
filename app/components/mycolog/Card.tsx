@@ -6,7 +6,7 @@ const Card = ({
   children,
 }: {
   header?: string;
-  children: React.ReactNode;
+  children?: React.ReactNode;
 }) => {
   return (
     <div
