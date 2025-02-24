@@ -1,69 +1,46 @@
 import React from "react";
-import { TableBody } from "react-aria-components";
-import {
-  Cell,
-  Column,
-  Row,
-  Table,
-  TableHeader,
-} from "~/components/react-aria-tailwind";
 
-const placeholderData = [
-  {
-    label: "K1",
-    stage: "Fruiting",
-    lastUpdate: "[2/22] Photo added",
-  },
-  {
-    label: "K2",
-    stage: "Fruiting",
-    lastUpdate: "[2/22] Photo added",
-  },
-  {
-    label: "SG1",
-    stage: "Fruiting",
-    lastUpdate: "[2/19] Recolonizing -> Fruiting",
-  },
-  {
-    label: "SG2",
-    stage: "Fruiting",
-    lastUpdate: "[2/19] Recolonizing -> Fruiting",
-  },
-  {
-    label: "SB1",
-    stage: "Fruiting",
-    lastUpdate: "[2/19] Recolonizing -> Fruiting",
-  },
-  {
-    label: "SM1",
-    stage: "Fruiting",
-    lastUpdate: "[2/19] Recolonizing -> Fruiting",
-  },
-  {
-    label: "L1",
-    stage: "Aborted",
-    lastUpdate: "[2/22] Aborted: Trichoderma contamination, dumped to compost",
-  },
-];
+type Update = {
+  date: string;
+  message: string;
+};
 
-const SpecimenTable = () => {
+type Specimen = {
+  label: string;
+  stage: string;
+  lastUpdate: Update;
+};
+
+interface SpecimenTableProps {
+  columns: Array<string>;
+  data: Array<Specimen>;
+}
+
+const SpecimenTable = (props: SpecimenTableProps) => {
   return (
-    <Table aria-label="Files" selectionMode="multiple">
-      <TableHeader>
-        <Column isRowHeader>Label</Column>
-        <Column>Stage</Column>
-        <Column>Last Update</Column>
-      </TableHeader>
-      <TableBody>
-        {placeholderData.map((data) => (
-          <Row key={data.label}>
-            <Cell>{data.label}</Cell>
-            <Cell>{data.stage}</Cell>
-            <Cell>{data.lastUpdate}</Cell>
-          </Row>
-        ))}
-      </TableBody>
-    </Table>
+    <div className="rounded-lg border border-white bg-zinc-800 p-3">
+      <table className="border-collapse rounded-lg">
+        <thead className="bg-slate-600">
+          <tr className="space-x-4">
+            {props.columns.map((column) => (
+              <th key={column}>{column}</th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {props.data.map((specimen) => (
+            <tr key={specimen.label} className="row-auto">
+              <td className="col-auto">{specimen.label}</td>
+              <td className="col-auto">{specimen.stage}</td>
+              <td className="col-auto">
+                <span>[{specimen.lastUpdate.date}]</span>:{" "}
+                {specimen.lastUpdate.message}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
   );
 };
 

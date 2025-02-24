@@ -1,5 +1,6 @@
 @import "tailwindcss";
 /* @import "tailwindcss/preflight"; */
+/* @import "tailwindcss/utilities"; */
 
 @theme {
   --font-sans:
@@ -9,9 +10,5 @@
 
 html,
 body {
-  @apply bg-white dark:bg-zinc-800;
-
-  @media (prefers-color-scheme: dark) {
-    color-scheme: dark;
-  }
+  @apply bg-zinc-700 text-zinc-100;
 }
