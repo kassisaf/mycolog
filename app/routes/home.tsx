@@ -1,6 +1,6 @@
 import React from "react";
 import type { Route } from "./+types/home";
-import SpecimenTable from "~/SpecimenTable/SpecimenTable";
+import { SpecimenTable } from "~/components/mycolog";
 
 // eslint-disable-next-line no-empty-pattern
 export function meta({}: Route.MetaArgs) {

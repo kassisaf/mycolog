@@ -6,7 +6,7 @@ import {
   Row,
   Table,
   TableHeader,
-} from "~/Components/ReactAriaTailwind";
+} from "~/components/react-aria-tailwind";
 
 const placeholderData = [
   {
