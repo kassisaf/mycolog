@@ -14,24 +14,24 @@ export function meta({}: Route.MetaArgs) {
 export default function Home() {
   return (
     <>
-      <main className="h-full">
-        <h1 className="my-5 text-3xl font-bold">🍄 Welcome to MycoLog 🍄</h1>
+      <main className="mt-5 flex h-full flex-col gap-8">
+        <h1 className="self-center text-3xl font-bold">
+          🍄 Welcome to MycoLog 🍄
+        </h1>
 
-        <div className="flex flex-col space-y-8">
-          <Card header="Fruiting Chamber">
-            <div>Photo feed</div>
-            <div>Temperature: 61.3 F (not controlled)</div>
-            <div>Humidity: 95% (setpoint 90%)</div>
-            <div>O2: ??% (setpoint: ??-??)</div>
-          </Card>
+        <Card header="Fruiting Chamber">
+          <div>Photo feed</div>
+          <div>Temperature: 61.3 F (not controlled)</div>
+          <div>Humidity: 95% (setpoint 90%)</div>
+          <div>O2: ??% (setpoint: ??-??)</div>
+        </Card>
 
-          <Card header="Active Specimen">
-            <SpecimenTable
-              columns={["Label", "Stage", "Last Update"]}
-              data={placeholderData}
-            />
-          </Card>
-        </div>
+        <Card header="Active Specimen">
+          <SpecimenTable
+            columns={["Label", "Stage", "Last Update"]}
+            data={placeholderData}
+          />
+        </Card>
       </main>
 
       <footer className="p-3 text-lg text-slate-200">
