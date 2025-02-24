@@ -10,5 +10,5 @@
 
 html,
 body {
-  @apply bg-zinc-700 text-zinc-100;
+  @apply flex h-full w-full flex-col items-center bg-zinc-700 text-zinc-100;
 }
