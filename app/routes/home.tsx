@@ -1,6 +1,7 @@
 import React from "react";
 import type { Route } from "./+types/home";
 import { SpecimenTable } from "~/components/mycolog";
+import Card from "~/components/mycolog/Card";
 
 // eslint-disable-next-line no-empty-pattern
 export function meta({}: Route.MetaArgs) {
@@ -12,11 +13,14 @@ export function meta({}: Route.MetaArgs) {
 
 export default function Home() {
   return (
-    <div className="flex h-full w-full flex-col items-center justify-center space-y-4 p-3">
-      <SpecimenTable
-        columns={["Label", "Stage", "Last Update"]}
-        data={placeholderData}
-      />
+    <div className="flex h-full w-full flex-col items-center">
+      <h1 className="my-5 text-3xl font-bold">🍄 Welcome to MycoLog 🍄</h1>
+      <Card header="Active Specimen">
+        <SpecimenTable
+          columns={["Label", "Stage", "Last Update"]}
+          data={placeholderData}
+        />
+      </Card>
     </div>
   );
 }
