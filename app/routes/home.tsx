@@ -1,9 +1,10 @@
 import React from "react";
 import type { Route } from "./+types/home";
-import Card from "~/components/Card";
-import Header from "~/components/Header";
-import Quote from "~/components/Quote";
+import Card from "~/components/layout/Card";
+import Header from "~/components/layout/Header";
+import Quote from "~/components/utility/Quote";
 import SpecimenTable from "~/components/SpecimenTable";
+import FruitingChamber from "~/components/FruitingChamber/FruitingChamber";
 
 // eslint-disable-next-line no-empty-pattern
 export function meta({}: Route.MetaArgs) {
@@ -20,10 +21,7 @@ export default function Home() {
 
       <main className="my-5 flex h-full flex-col gap-8">
         <Card header="Fruiting Chamber">
-          <div>Photo feed</div>
-          <div>Temperature: 61.3 F (not controlled)</div>
-          <div>Humidity: 95% (setpoint 90%)</div>
-          <div>O2: ??% (setpoint: ??-??)</div>
+          <FruitingChamber />
         </Card>
 
         <Card header="Active Specimen">
