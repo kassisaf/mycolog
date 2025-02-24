@@ -14,11 +14,14 @@ export function meta({}: Route.MetaArgs) {
 export default function Home() {
   return (
     <>
-      <main className="mt-5 flex h-full flex-col gap-8">
-        <h1 className="self-center text-3xl font-bold">
-          🍄 Welcome to MycoLog 🍄
-        </h1>
+      <div className="sticky top-0 mb-3 flex w-full flex-row items-center justify-between bg-zinc-600 pl-4 shadow-xl sm:pr-2 sm:pl-8">
+        <h1 className="text text-3xl font-bold">MycoLog</h1>
+        <button className="cursor-pointer p-2 text-5xl hover:bg-zinc-500">
+          🍄
+        </button>
+      </div>
 
+      <main className="my-5 flex h-full flex-col gap-8">
         <Card header="Fruiting Chamber">
           <div>Photo feed</div>
           <div>Temperature: 61.3 F (not controlled)</div>
@@ -34,7 +37,7 @@ export default function Home() {
         </Card>
       </main>
 
-      <footer className="p-3 text-lg text-slate-200">
+      <footer className="aboslute bottom-0 mb-2 p-3 text-lg text-slate-200">
         <Quote
           quote="The only difference between screwing around and science is writing
               it down."
