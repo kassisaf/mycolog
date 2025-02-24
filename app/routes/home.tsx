@@ -1,7 +1,9 @@
 import React from "react";
 import type { Route } from "./+types/home";
-import { SpecimenTable, Quote } from "~/components/mycolog";
-import Card from "~/components/mycolog/Card";
+import Card from "~/components/Card";
+import Header from "~/components/Header";
+import Quote from "~/components/Quote";
+import SpecimenTable from "~/components/SpecimenTable";
 
 // eslint-disable-next-line no-empty-pattern
 export function meta({}: Route.MetaArgs) {
@@ -14,12 +16,7 @@ export function meta({}: Route.MetaArgs) {
 export default function Home() {
   return (
     <>
-      <div className="sticky top-0 mb-3 flex w-full flex-row items-center justify-between bg-zinc-600 pl-4 shadow-xl sm:pr-2 sm:pl-8">
-        <h1 className="text text-3xl font-bold">MycoLog</h1>
-        <button className="cursor-pointer p-2 text-5xl hover:bg-zinc-500">
-          🍄
-        </button>
-      </div>
+      <Header />
 
       <main className="my-5 flex h-full flex-col gap-8">
         <Card header="Fruiting Chamber">
